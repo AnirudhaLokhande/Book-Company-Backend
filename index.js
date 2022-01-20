@@ -1,6 +1,6 @@
 // MAIN BACKEND FILE
 //npx nodemon index.js --  for mac
-const db = require("./database");
+// const db = require("./database");
 const BookModel = require("./database/books");
 const AuthorModel = require("./database/authors");
 const PublicationModel = require("./database/publications");
@@ -199,7 +199,7 @@ app.delete("/book-delete/:isbn", async (req, res) => {
 });
 
 // http://localhost:3000/book-author-delete/12345ONE/1
-app.delete("/book-author-delete/:isbn/:id", (req, res) => {
+app.delete("/book-author-delete/:isbn/:id", async (req, res) => {
     // console.log(req.params);
     const {isbn, id}= req.params;
     let getSpecificBook= await BookModel.findOne({ISBN: isbn}); 
